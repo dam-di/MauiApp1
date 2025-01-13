@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiApp1.Views.ReportsView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="ReportsView">
+    <VerticalStackLayout>
+        <Label
+            HorizontalOptions="Center"
+            Text="Welcome to ERCIDAM!"
+            VerticalOptions="Center" />
+        <StackLayout Orientation="Horizontal">
+
+            <!--  CONTENEDOR DE FILTROS PARA LOS INFORMES  -->
+            <StackLayout
+                Margin="20"
+                HeightRequest="550"
+                Orientation="Vertical"
+                WidthRequest="300"
+                BackgroundColor="WhiteSmoke">
+                <StackLayout.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Opacity=".7"
+                        Radius="20"
+                        Offset="10,10" />
+                </StackLayout.Shadow>
+
+
+            </StackLayout>
+
+            <!--  CONTENEDOR PARA EL VISOR PDF  -->
+            <StackLayout
+                Margin="20"
+                HeightRequest="550"
+                Orientation="Vertical"
+                WidthRequest="550"
+                BackgroundColor="WhiteSmoke">
+
+                <StackLayout.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Opacity=".7"
+                        Radius="20"
+                        Offset="10,10" />
+                </StackLayout.Shadow>
+                <WebView
+                    HeightRequest="500"
+                    Margin="10"
+                    Source="http://127.0.0.1:8080/report/getReport"
+                    WidthRequest="500" />
+            </StackLayout>
+
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

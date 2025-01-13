@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiApp1.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiApp1"
+    xmlns:views="clr-namespace:MauiApp1.Views"
+    Title="MauiApp1"
+    Shell.FlyoutWidth="250"
+    Shell.FlyoutBackdrop="Gray"
+    Shell.BackgroundColor="Blue"
+    
+    Shell.FlyoutBehavior="Flyout">
+
+    <Shell.FlyoutHeader>
+        <Image Source="dotnet_bot.png" WidthRequest="80" />
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="OPCION 1">
+        <ShellContent
+          
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="OPCION 2">
+        <ShellContent ContentTemplate="{DataTemplate views:TiendaView}" Route="FomularioView" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="OPCION 3">
+        <ShellContent ContentTemplate="{DataTemplate views:FormularioView}" Route="FomularioView" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="OPCION 4">
+        <ShellContent ContentTemplate="{DataTemplate views:ReportsView}" 
+                      Route="ReportsView" />
+    </FlyoutItem>
+
+    <!--<TabBar>
+        <Tab Title="TIENDA">
+            <ShellContent ContentTemplate="{DataTemplate views:TiendaView}" Route="FomularioView" />
+        </Tab>
+
+        <Tab Title="INICIO">
+            <ShellContent
+                Title="Home"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" />
+        </Tab>
+
+        <Tab Title="FORMULARIO">
+            <ShellContent ContentTemplate="{DataTemplate views:FormularioView}" Route="FomularioView" />
+        </Tab>
+
+    </TabBar>-->
+
+
+
+</Shell>

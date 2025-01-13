@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiApp1.Views.TiendaView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodels="clr-namespace:MauiApp1.ViewModels"
+    Title="TiendaView"
+    x:DataType="viewmodels:TiendaViewModel"
+    BindingContext="{viewmodels:TiendaViewModel}">
+    <Grid
+        ColumnDefinitions="*,100,150,250,*"
+        HorizontalOptions="Fill"
+        RowDefinitions="*,100,40,40,40,80,80,100,*"
+        VerticalOptions="Fill">
+
+        <Rectangle
+            Grid.Row="2"
+            Grid.RowSpan="4"
+            Grid.Column="1"
+            Grid.ColumnSpan="3"
+            BackgroundColor="LightGray">
+            <Rectangle.Shadow>
+                <Shadow
+                    Brush="Black"
+                    Opacity=".8"
+                    Radius="5"
+                    Offset="10,10" />
+            </Rectangle.Shadow>
+        </Rectangle>
+
+        <Entry
+            Grid.Row="2"
+            Grid.Column="1"
+            Text="{Binding Producto.Codigo}" />
+
+        <DatePicker
+            Grid.Row="3"
+            Grid.Column="1"
+            Date="{Binding Producto.Fecha}" />
+
+        <!--  Desplegable categorias  -->
+        <Picker
+            x:Name="pickerCategorias"
+            Grid.Row="4"
+            Grid.Column="1"
+            ItemsSource="{Binding ListaCategorias}"
+            SelectedItem="{Binding Producto.Categoria}">
+            <Picker.Behaviors>
+                <toolkit:EventToCommandBehavior
+                    Command="{Binding HabilitarTiposCommand}"
+                    CommandParameter="{Binding Source={x:Reference pickerCategorias}, Path=SelectedIndex}"
+                    EventName="SelectedIndexChanged" />
+            </Picker.Behaviors>
+        </Picker>
+
+        <!--  Desplegable tipos  -->
+        <Picker
+            Grid.Row="4"
+            Grid.Column="2"
+            IsEnabled="{Binding IsEnabled}"
+            ItemsSource="{Binding ListaTipos}" />
+
+
+        <CheckBox
+            Grid.Row="5"
+            Grid.Column="1"
+            IsChecked="{Binding Producto.BajoConsumo}" />
+
+        <Button
+            Grid.Row="6"
+            Grid.Column="1"
+            Command="{Binding MostrarDatosCommand}"
+            Text="ACEPTAR" />
+
+        <Entry
+            Grid.Row="2"
+            Grid.Column="3"
+            BackgroundColor="Gray"
+            Text="{Binding Source={x:Reference stepperStock}, Path=Value}" />
+
+
+        <Stepper
+            x:Name="stepperStock"
+            Grid.Row="3"
+            Grid.Column="3"
+            Maximum="10000"
+            Minimum="1">
+            <Stepper.Behaviors>
+                <toolkit:EventToCommandBehavior
+                    Command="{Binding ActualizarStockCommand}"
+                    CommandParameter="{Binding Source={x:Reference stepperStock}, Path=Value}"
+                    EventName="ValueChanged" />
+            </Stepper.Behaviors>
+        </Stepper>
+
+        <Label
+            Grid.Row="4"
+            Grid.Column="3"
+            BackgroundColor="Gray"
+            Text="{Binding Source={x:Reference stepperStock}, Path=Value, StringFormat='Has seleccionado {0} ud'}" />
+
+
+    </Grid>
+</ContentPage>

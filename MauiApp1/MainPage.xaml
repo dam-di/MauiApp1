@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiApp1.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <StackLayout
+        Background="LightGray"
+        HeightRequest="500"
+        HorizontalOptions="Center"
+        VerticalOptions="Fill"
+        WidthRequest="340">
+        <StackLayout.Shadow>
+            <Shadow
+                Brush="Black"
+                Opacity="0.7"
+                Radius="20"
+                Offset="10,10" />
+        </StackLayout.Shadow>
+
+        <Label
+            BackgroundColor="Black"
+            FontAttributes="Bold"
+            FontFamily="Comic Sans"
+            FontSize="30"
+            HorizontalTextAlignment="Center"
+            Text="HOLA A TODA LA CLASE"
+            TextColor="WhiteSmoke" />
+
+        <Button
+            Margin="20"
+            BackgroundColor="CadetBlue"
+            FontAttributes="Bold"
+            FontSize="20"
+            HorizontalOptions="Center"
+            Text="ACEPTAR"
+            TextColor="Black" />
+
+        <Entry
+            FontSize="20"
+            Placeholder="Escribe tu nombre"
+            PlaceholderColor="Gray"
+            WidthRequest="300" />
+
+        <DatePicker
+            Margin="20"
+            HorizontalOptions="Center"
+            WidthRequest="300" />
+
+        <Picker WidthRequest="300">
+            <Picker.Items>
+                <x:String>Azul</x:String>
+                <x:String>Verde</x:String>
+                <x:String>Rojo</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <SearchBar Margin="20" WidthRequest="300" />
+
+        <!--  Este contenedor es de orientacion horizontal  -->
+        <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+            <CheckBox />
+            <Label Text="Aceptar términos y condiciones" VerticalTextAlignment="Center" />
+        </StackLayout>
+
+
+    </StackLayout>
+
+</ContentPage>
