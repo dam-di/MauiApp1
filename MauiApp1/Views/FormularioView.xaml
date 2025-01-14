@@ -4,22 +4,23 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodels="clr-namespace:MauiApp1.ViewModels"
+    Title="FormularioView"
     x:DataType="viewmodels:FormularioViewModel"
-    BindingContext="{viewmodels:FormularioViewModel}"
-    Title="FormularioView">
+    BindingContext="{viewmodels:FormularioViewModel}">
 
     <StackLayout
         BackgroundColor="LightGray"
         HeightRequest="600"
         WidthRequest="400">
-        <Label Text="NOMBRE"/>
-        <Entry Text="{Binding FormularioModel.Nombre}"/>
-        <Label Text="CORREO"/>
-        <Entry Text="{Binding FormularioModel.Correo}"/>
-        <Entry Text="HOLA 3"/>
-        <Picker WidthRequest="300"
-                ItemsSource="{Binding ListaDptos}"
-                SelectedItem="{Binding FormularioModel.Departamento}">
+        <Label Text="NOMBRE" />
+        <Entry Text="{Binding FormularioModel.Nombre}" />
+        <Label Text="CORREO" />
+        <Entry Text="{Binding FormularioModel.Correo}" />
+        <Entry Text="HOLA 3" />
+        <Picker
+            ItemsSource="{Binding ListaDptos}"
+            SelectedItem="{Binding FormularioModel.Departamento}"
+            WidthRequest="300">
             <!--<Picker.Items>
                 <x:String>Azul</x:String>
                 <x:String>Verde</x:String>
@@ -27,14 +28,12 @@
             </Picker.Items>-->
         </Picker>
 
-        <!--Este contenedor es de orientacion horizontal-->
-        <StackLayout Orientation="Horizontal" 
-             HorizontalOptions="Center">
-            <CheckBox IsChecked="{Binding FormularioModel.Terminos}"/>
-            <Label Text="Aceptar términos y condiciones"
-           VerticalTextAlignment="Center"/>
+        <!--  Este contenedor es de orientacion horizontal  -->
+        <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding FormularioModel.Terminos}" />
+            <Label Text="Aceptar términos y condiciones" VerticalTextAlignment="Center" />
         </StackLayout>
-        <Button Command="{Binding MostrarDatosCommand}"/>
+        <Button Command="{Binding MostrarDatosCommand}" />
 
     </StackLayout>
 </ContentPage>

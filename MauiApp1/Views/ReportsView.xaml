@@ -3,7 +3,10 @@
     x:Class="MauiApp1.Views.ReportsView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="ReportsView">
+    xmlns:viewmodels="clr-namespace:MauiApp1.ViewModels"
+    x:DataType="viewmodels:ReportsViewModel"
+    BindingContext="{viewmodels:ReportsViewModel}">
+
     <VerticalStackLayout>
         <Label
             HorizontalOptions="Center"
@@ -14,10 +17,10 @@
             <!--  CONTENEDOR DE FILTROS PARA LOS INFORMES  -->
             <StackLayout
                 Margin="20"
+                BackgroundColor="WhiteSmoke"
                 HeightRequest="550"
                 Orientation="Vertical"
-                WidthRequest="300"
-                BackgroundColor="WhiteSmoke">
+                WidthRequest="300">
                 <StackLayout.Shadow>
                     <Shadow
                         Brush="Black"
@@ -25,6 +28,12 @@
                         Radius="20"
                         Offset="10,10" />
                 </StackLayout.Shadow>
+                <StackLayout Margin="10" Orientation="Horizontal">
+                    <Entry Text="{Binding FiltroCorreo}" 
+                           Placeholder="Correo" WidthRequest="190" />
+                    <Button Command="{Binding GetPDFCommand}" 
+                            Margin="5,0,0,0" Text="BUSCAR" />
+                </StackLayout>
 
 
             </StackLayout>
@@ -32,10 +41,10 @@
             <!--  CONTENEDOR PARA EL VISOR PDF  -->
             <StackLayout
                 Margin="20"
+                BackgroundColor="WhiteSmoke"
                 HeightRequest="550"
                 Orientation="Vertical"
-                WidthRequest="550"
-                BackgroundColor="WhiteSmoke">
+                WidthRequest="550">
 
                 <StackLayout.Shadow>
                     <Shadow
@@ -45,9 +54,9 @@
                         Offset="10,10" />
                 </StackLayout.Shadow>
                 <WebView
-                    HeightRequest="500"
                     Margin="10"
-                    Source="http://127.0.0.1:8080/report/getReport"
+                    HeightRequest="500"
+                    Source="{Binding UrlPDF}"
                     WidthRequest="500" />
             </StackLayout>
 
